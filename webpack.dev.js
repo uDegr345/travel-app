@@ -9,17 +9,21 @@ module.exports = {
         libraryTarget: 'var',
         library: 'Client'
     },
+    devServer: {
+        port: 9000,
+        compress: true,
+  },
     mode: 'development',
     devtool: 'source-map',
     module: {
         rules: [
             {
-                test: '/\.js$/',
+                test: /\.js$/,
                 exclude: /node_modules/,
                 loader: "babel-loader"
             },
             {
-                test: /\.scss$/,
+                test: /.scss$/,
                 use: [ 'style-loader', 'css-loader', 'sass-loader' ]
             }
         ]
