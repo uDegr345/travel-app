@@ -1,0 +1,32 @@
+header{
+    border-bottom: 1px solid black;
+}
+
+
+h1{
+text-align: center;
+}
+
+
+
+nav {
+    text-align: center;
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+  
+    li {
+        text-align: center;
+        display: inline-block;
+    }
+  
+    a {
+      display: block;
+      padding: 6px 12px;
+      text-decoration: none;
+    }
+  }
+  
+
