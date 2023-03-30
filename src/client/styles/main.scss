@@ -1,0 +1,8 @@
+#mainGrid {
+    display: grid;
+    border: 1px solid green;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    justify-items: center;
+   
+}

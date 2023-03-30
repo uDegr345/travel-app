@@ -1,0 +1,23 @@
+#tripSearchGrid {
+    display: grid;
+    
+    grid-template-columns: 1fr 1fr 1fr;
+    border: 2px solid red;
+    width: 99%;
+    grid-gap: 10px;
+    padding: 10px;
+
+}
+
+
+.formColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    button::before {
+        justify-self: center;
+        content: "test";
+        
+    }
+}
+
