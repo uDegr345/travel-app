@@ -1,3 +1,5 @@
+const fetch = require('node-fetch');
+
 // Require Express to run server and routes
 const express = require('express');
 
@@ -42,12 +44,11 @@ app.post('/geolocationCall', async (req,res) => {
     const placeName = req.body.placeName
     const baseUrl =  req.body.url
     
-    const fetchUrl = `${baseUrl}placename=${placeName}&user=${user}`
+    const fetchUrl = `${baseUrl}${placeName}&maxRows=10&username=${user}`
 
     console.log(fetchUrl)
 
     await fetch(fetchUrl)
-    .then(response => response.json)
     .then(data => res.send(data))
     .catch(error => console.log('error fetching geolocation', error))
 

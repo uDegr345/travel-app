@@ -1,6 +1,6 @@
 
 
-const baseUrl = 'http://api.geonames.org/postalCodeSearchJSON?';
+const baseUrl = 'http://api.geonames.org/searchJSON?q=';
 
 
 
@@ -23,6 +23,8 @@ async function getGeolocation(event) {
 
     const geolocationResponse = await response.json()
     console.log(geolocationResponse)
+
+
    
 }
 
