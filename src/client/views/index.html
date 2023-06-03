@@ -28,7 +28,7 @@
 				<input type="date" id="tripDate" name="tripDate">
 			</div>
 				<div class="formColumn">
-					<button type="button"></button>
+					<input type="submit" value="submit" onclick="return Client.getGeolocation(event)" onsubmit="return Client.getGeolocation(event)">
 				</div>
 				
 			</form>
@@ -76,6 +76,15 @@
 	<footer>
 		<p> Travel App</p>
 	</footer>
+
+	<script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
+
 </body>
 
 </html>
