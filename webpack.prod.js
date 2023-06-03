@@ -4,11 +4,15 @@ const HtmlWebPackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin')
 
+
 module.exports = {
     entry: './src/client/index.js',
     output: {
+        path: path.join(__dirname, "dist"),
+        filename: "main.js",
         libraryTarget: 'var',
-        library: 'Client'
+        library: 'Client',
+        clean: true
     },
     mode: 'production',
     module: {
@@ -31,5 +35,6 @@ module.exports = {
         }),
         new WorkboxPlugin.GenerateSW(),
         new MiniCssExtractPlugin({filename: '[name].css'})
+        
     ]
 }
