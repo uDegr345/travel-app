@@ -38,11 +38,13 @@ function listening(){
 
 // Routes
 app.post('/geolocationCall', async (req,res) => {
-    console.log('debug')
+    
 
     const user  = process.env.GEONAMES_USER
     const placeName = req.body.placeName
     const baseUrl =  req.body.url
+
+    console.log(`baseUrl is : ${baseUrl}`)
     
     const fetchUrl = `${baseUrl}${placeName}&maxRows=10&username=${user}`
 

@@ -8,7 +8,7 @@ async function getGeolocation(event) {
     event.preventDefault();
     const placeName = document.getElementById('tripDestination')
 
-    console.log('testgeo')
+    console.log(baseUrl)
     console.log(placeName.value)
 
     const response = await fetch('/geolocationCall', {
@@ -20,9 +20,13 @@ async function getGeolocation(event) {
         },
         body: JSON.stringify({ "placeName": placeName.value, "url" : baseUrl})
     })
+    const responseData = await response.json()
+    console.log(responseData)
 
-    const geolocationResponse = await response.json()
-    console.log(geolocationResponse)
+    
+
+    
+    
 
 
    
