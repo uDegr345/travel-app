@@ -44,13 +44,16 @@ app.post('/geolocationCall', async (req,res) => {
     const placeName = req.body.placeName
     const baseUrl =  req.body.url
 
+    console.log(`baseUrl is : ${placeName}`)
     console.log(`baseUrl is : ${baseUrl}`)
     
-    const fetchUrl = `${baseUrl}${placeName}&maxRows=10&username=${user}`
+    
+    const fetchUrl = `${baseUrl}city=${placeName}&format=json`
 
     console.log(fetchUrl)
 
     await fetch(fetchUrl)
+    .then(response => response.json())
     .then(data => res.send(data))
     .catch(error => console.log('error fetching geolocation', error))
 
@@ -58,10 +61,20 @@ app.post('/geolocationCall', async (req,res) => {
 
 });
 
-app.post('/postData', (request, response) => {
-    let newData = request.body;
-    projectData.temperature = newData.temperature;
-    projectData.date = newData.date;
-    projectData.userResponse = newData.userResponse;;
-    return projectData;
-});
+app.post('/weatherbitCall', async (req,res) => {
+ const lat = req.body.lat
+ const lon  = req.body.lon
+  const baseUrl  = req.body.url
+
+
+    const fetchUrl = `${baseUrl}&lat=${lat}&lon=${lon}&key=${process.env.WEATHERBIT_API_KEY}`
+console.log(fetchUrl)
+
+await fetch(fetchUrl)
+.then(response => response.json())
+.then(data => res.send(data))
+.catch(error => console.log('error fetching weatherbit data', error))
+
+
+
+})
