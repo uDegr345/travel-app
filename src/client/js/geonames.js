@@ -1,6 +1,5 @@
 
-
-const baseUrl = 'http://api.geonames.org/searchJSON?q=';
+const baseUrl =  'https://nominatim.openstreetmap.org/search?'
 
 
 
@@ -20,8 +19,25 @@ async function getGeolocation(event) {
         },
         body: JSON.stringify({ "placeName": placeName.value, "url" : baseUrl})
     })
-    const responseData = await response.json()
-    console.log(responseData)
+
+   const data = await response.json()
+   console.log(data)
+   const [lat, lon] = filterLatAndLang(data)
+   
+   Client.getWeatherData(lat, lon)
+
+   
+
+   function filterLatAndLang(res) {
+    
+   const lat = res[0].lat
+   const lon = res[0].lon
+      console.log(`lat is :${lat}`)
+   console.log(`lon is : ${lon}`)
+
+   return [lat, lon]
+
+   }
 
     
 
