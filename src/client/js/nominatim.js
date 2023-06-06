@@ -1,14 +1,12 @@
 
-const baseUrl =  'https://nominatim.openstreetmap.org/search?'
-
-
-
-async function getGeolocation(event) {
-    event.preventDefault();
+const getGeolocation =  async() => {
+  
+    const baseUrl =  'https://nominatim.openstreetmap.org/search?'
     const placeName = document.getElementById('tripDestination')
 
-    console.log(baseUrl)
-    console.log(placeName.value)
+    const fetchUrl = `${baseUrl}city=${placeName.value}&format=json`
+
+    console.log(`geolocurl is ${fetchUrl}`)
 
     const response = await fetch('/geolocationCall', {
         method: 'POST',
@@ -17,15 +15,12 @@ async function getGeolocation(event) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ "placeName": placeName.value, "url" : baseUrl})
+        body: JSON.stringify({ "nominatimUrl": fetchUrl})
     })
 
    const data = await response.json()
    console.log(data)
-   const [lat, lon] = filterLatAndLang(data)
-   
-   Client.getWeatherData(lat, lon)
-
+   return filterLatAndLang(data)
    
 
    function filterLatAndLang(res) {
@@ -38,14 +33,6 @@ async function getGeolocation(event) {
    return [lat, lon]
 
    }
-
-    
-
-    
-    
-
-
-   
 }
 
 
