@@ -29,7 +29,7 @@ dotenv.config()
 // Setup Server
 const port = 3000;
 
-const server = app.listen(port, listening);
+app.listen(port, listening);
 function listening(){
      console.log("the server is running"); 
      console.log(`running on port ${port}`);
@@ -39,20 +39,11 @@ function listening(){
 // Routes
 app.post('/geolocationCall', async (req,res) => {
     
+    const nominatimUrl = req.body.nominatimUrl
 
-    const user  = process.env.GEONAMES_USER
-    const placeName = req.body.placeName
-    const baseUrl =  req.body.url
+    console.log(`url is : ${nominatimUrl}`)
 
-    console.log(`baseUrl is : ${placeName}`)
-    console.log(`baseUrl is : ${baseUrl}`)
-    
-    
-    const fetchUrl = `${baseUrl}city=${placeName}&format=json`
-
-    console.log(fetchUrl)
-
-    await fetch(fetchUrl)
+    await fetch(nominatimUrl)
     .then(response => response.json())
     .then(data => res.send(data))
     .catch(error => console.log('error fetching geolocation', error))
@@ -62,18 +53,31 @@ app.post('/geolocationCall', async (req,res) => {
 });
 
 app.post('/weatherbitCall', async (req,res) => {
- const lat = req.body.lat
- const lon  = req.body.lon
-  const baseUrl  = req.body.url
+
+    const weatherbitUrl  = req.body.weatherbitUrl
+
+    console.log(weatherbitUrl)
+    console.log(`weatherbitUrl is : ${weatherbitUrl}`)
+
+    await fetch(weatherbitUrl)
+    .then(response => response.json())
+    .then(data => res.send(data))
+    .catch(error => console.log('error fetching weatherbit data', error))
 
 
-    const fetchUrl = `${baseUrl}&lat=${lat}&lon=${lon}&key=${process.env.WEATHERBIT_API_KEY}`
-console.log(fetchUrl)
 
-await fetch(fetchUrl)
-.then(response => response.json())
-.then(data => res.send(data))
-.catch(error => console.log('error fetching weatherbit data', error))
+})
+
+app.post('/pixabayCall', async (req,res) => {
+
+    const pixabayUrl  = req.body.pixabayUrl
+
+    console.log(`pixabayUrl is : ${pixabayUrl}`)
+
+    await fetch(pixabayUrl)
+    .then(response => response.json())
+    .then(data => res.send(data))
+    .catch(error => console.log('error fetching pixabay data', error))
 
 
 
