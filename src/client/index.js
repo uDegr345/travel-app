@@ -3,6 +3,8 @@ import { getWeatherData } from './js/weatherbit'
 import { getLocationImage } from './js/pixabay'
 import { handleNewTravel } from './js/formHandler'
 import { updateTripGrid } from './js/uiHandler'
+import { isDateInRange } from './js/dateChecker'
+import { calculateDaysToTravel } from './js/dateChecker'
 
 import "./styles/header.scss"
 import "./styles/search.scss"
@@ -15,6 +17,8 @@ export {
     getWeatherData,
     getLocationImage,
     handleNewTravel,
-    updateTripGrid
+    updateTripGrid,
+    isDateInRange,
+    calculateDaysToTravel
 }
 
