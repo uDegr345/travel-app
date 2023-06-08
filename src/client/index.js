@@ -5,12 +5,25 @@ import { handleNewTravel } from './js/formHandler'
 import { updateTripGrid } from './js/uiHandler'
 import { isDateInRange } from './js/dateChecker'
 import { calculateDaysToTravel } from './js/dateChecker'
+import { displaySavedTrips } from './js/uiHandler'
 
 import "./styles/header.scss"
 import "./styles/search.scss"
 import "./styles/main.scss"
 import "./styles/tripCard.scss"
 import "./styles/tripGrid.scss"
+
+
+window.addEventListener('DOMContentLoaded', () => {
+displaySavedTrips()
+});
+const storageClear = document.getElementById('storageClear')
+storageClear.addEventListener('click', () => {
+    localStorage.clear()
+    location.reload()
+})
+
+
 
 export {
     getGeolocation,
@@ -19,6 +32,7 @@ export {
     handleNewTravel,
     updateTripGrid,
     isDateInRange,
-    calculateDaysToTravel
+    calculateDaysToTravel,
+    displaySavedTrips
 }
 

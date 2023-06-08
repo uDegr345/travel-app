@@ -1,5 +1,20 @@
 function updateTripGrid(imageLink, cityName, tripDateValue, temp) {
     createTripCard(imageLink, cityName, tripDateValue, temp)
+
+    //create new tip object
+    const trip = {
+        imageLink: imageLink,
+        cityName: cityName,
+        tripDateValue: tripDateValue,
+        temp: temp
+    }
+    
+    //update existing trips array or create new one
+    let trips = JSON.parse(localStorage.getItem('trips')) || []
+    trips.push(trip)
+
+    //put new trips array in local storage
+    localStorage.setItem('trips', JSON.stringify(trips))
 }
 
 function createTripCard(imageLink, cityName, tripDateValue, temp) {
@@ -41,35 +56,23 @@ function createTripCard(imageLink, cityName, tripDateValue, temp) {
     article.appendChild(cityNameElement)
     article.appendChild(dateElement)
     article.appendChild(tempElement)
-
+    
     fragment.appendChild(article)
     section.appendChild(fragment)
+}
 
-    
+function displaySavedTrips() {
+ let trips = JSON.parse(localStorage.getItem('trips'));
 
-
-
-
-
-// Create a new parent element
-const parentElement = document.createElement('div');
-
-// Create three new child elements
-const childElement1 = document.createElement('p');
-const childElement2 = document.createElement('p');
-const childElement3 = document.createElement('p');
-
-// Append the three child elements to the parent element
-parentElement.appendChild(childElement1);
-parentElement.appendChild(childElement2);
-parentElement.appendChild(childElement3);
-
-// Append the parent element to the DocumentFragment
-fragment.appendChild(parentElement);
-
-
+ if(trips != null){
+    trips.forEach(trip => {
+        createTripCard(trip.imageLink, trip.cityName, trip.tripDateValue, trip.temp);
+     });
+ }
+ 
 }
 
 export {
-    updateTripGrid
+    updateTripGrid, 
+    displaySavedTrips
 }
