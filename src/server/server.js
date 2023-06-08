@@ -36,6 +36,14 @@ function listening(){
 }
 
 
+app.get('/test', (req, res) => {
+    try{
+        res.status(200).send()
+    } catch(err) {
+        res.status(500).send()
+    }
+})
+
 // Routes
 app.post('/geolocationCall', async (req,res) => {
     
@@ -75,3 +83,5 @@ app.post('/pixabayCall', async (req,res) => {
 
 
 })
+
+module.exports = app
