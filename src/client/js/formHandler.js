@@ -1,3 +1,5 @@
+
+
 async function handleNewTravel(event) {
     const tripDateElement = document.getElementById('tripDate')
     const tripDateValue = tripDateElement.value

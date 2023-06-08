@@ -6,8 +6,6 @@ const getGeolocation =  async() => {
 
     const fetchUrl = `${baseUrl}city=${placeName.value}&format=json`
 
-    console.log(`geolocurl is ${fetchUrl}`)
-
     const response = await fetch('/geolocationCall', {
         method: 'POST',
         credentials: 'same-origin',
@@ -19,7 +17,6 @@ const getGeolocation =  async() => {
     })
 
    const data = await response.json()
-   console.log(data)
    return filterLatAndLang(data)
    
 
@@ -27,8 +24,6 @@ const getGeolocation =  async() => {
     
    const lat = res[0].lat
    const lon = res[0].lon
-      console.log(`lat is :${lat}`)
-   console.log(`lon is : ${lon}`)
 
    return [lat, lon]
 

@@ -41,8 +41,6 @@ app.post('/geolocationCall', async (req,res) => {
     
     const nominatimUrl = req.body.nominatimUrl
 
-    console.log(`url is : ${nominatimUrl}`)
-
     await fetch(nominatimUrl)
     .then(response => response.json())
     .then(data => res.send(data))
@@ -56,9 +54,6 @@ app.post('/weatherbitCall', async (req,res) => {
 
     const weatherbitUrl  = req.body.weatherbitUrl
 
-    console.log(weatherbitUrl)
-    console.log(`weatherbitUrl is : ${weatherbitUrl}`)
-
     await fetch(weatherbitUrl)
     .then(response => response.json())
     .then(data => res.send(data))
@@ -71,8 +66,6 @@ app.post('/weatherbitCall', async (req,res) => {
 app.post('/pixabayCall', async (req,res) => {
 
     const pixabayUrl  = req.body.pixabayUrl
-
-    console.log(`pixabayUrl is : ${pixabayUrl}`)
 
     await fetch(pixabayUrl)
     .then(response => response.json())

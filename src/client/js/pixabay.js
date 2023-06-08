@@ -14,7 +14,6 @@ const getLocationImage =  async(location) => {
         body: JSON.stringify({"pixabayUrl" : fetchUrl})
     })
     const res = await response.json()
-    console.log(res)
     const webformat = res.hits[0].webformatURL;
     return webformat
 }

@@ -16,7 +16,6 @@ const getWeatherData =  async(lat, lon) => {
         body: JSON.stringify({"weatherbitUrl" : fetchUrl})
     })
     const res = await response.json()
-    console.log(res)
 
     const temp = res.data[0].temp
     const cityName = res.city_name
