@@ -3,8 +3,11 @@
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    display: flex;
+    flex-direction: column;
 }
 .tripImg {
     width: 300px;
     height: 300px;
+
 }

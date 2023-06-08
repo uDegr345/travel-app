@@ -6,3 +6,28 @@
     grid-gap:1rem;
     
 }
+
+@media(max-width:1380px){
+    #tripGrid {
+        grid-template-columns: 1fr 1fr 1fr;
+
+    }
+}
+
+@media(max-width:1030px){
+    #tripGrid {
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+
+}
+
+@media(max-width:680px){
+    #tripGrid {
+        grid-template-columns: 1fr;
+
+    }
+
+
+}

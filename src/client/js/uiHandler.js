@@ -34,7 +34,7 @@ function createTripCard(imageLink, cityName, tripDateValue, temp) {
     image.classList.add('tripImg')
 
     //create the html for the city name
-    const  cityNameElement =  document.createElement('p')
+    const  cityNameElement =  document.createElement('h2')
     cityNameElement.innerText = cityName
     cityNameElement.classList.add('name')
 
